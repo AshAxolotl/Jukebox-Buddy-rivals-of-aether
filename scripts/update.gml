@@ -4,7 +4,23 @@
 suppress_stage_music(0, 1);
 
 if (state == "taunt"){
-	if (state_timer == 2){
+	if (state_timer == 5){
+		// stops sounds
+		if is_string(last_sound)
+		{
+			sound_stop(asset_get(last_sound));
+			sound_stop(sound_get(last_sound));
+		}else if is_number(last_sound)
+		{
+			sound_stop(last_sound);
+		}
+		current_sound_text = "..."
+		with (oPlayer)
+		{
+			current_jukebox_text = other.current_sound_text 
+		}
+	}
+	if (state_timer == 60){
 		var _index = 0;
 		current_sound = sounds[random_func(_index, array_length(sounds), true)];
 		// check to make sure its not the same sounds
@@ -18,15 +34,6 @@ if (state == "taunt"){
 				break;
 			}
 		} 
-		// stops sounds
-		if is_string(last_sound)
-		{
-			sound_stop(asset_get(last_sound));
-			sound_stop(sound_get(last_sound));
-		}else if is_number(last_sound)
-		{
-			sound_stop(last_sound);
-		}
 		
 		// plays sound
 		if is_string(current_sound) // checks for string
@@ -56,7 +63,7 @@ if (state == "taunt"){
 		current_sound_text = string_replace(current_sound_text, "sfx", "")
 		if (string_char_at(current_sound_text, string_length(current_sound_text)) == "i")
 		{
-			current_sound_text = string_delete(current_sound_text, string_length(current_sound_text), 1)
+			current_sound_text = string_delete(current_sound_text, (string_length(current_sound_text) - 2), 3)
 		}
 		if (string_char_at(current_sound_text, 1) == " ")
 		{
@@ -72,4 +79,3 @@ if (state == "taunt"){
 }
 
 last_sound = oPlayer.current_jukebox_music
-

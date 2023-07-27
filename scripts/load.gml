@@ -1,19 +1,20 @@
-sprite_change_offset("idle", 50, 94);
-sprite_change_offset("run", 50, 94);
-sprite_change_offset("taunt", 50, 94);
-sprite_change_offset("wait", 50, 94);
-sprite_change_offset("ledge", 50, 94);
-sprite_change_offset("turn", 50, 94);
+sprite_change_offset("idle", 48, 94);
+sprite_change_offset("run", 48, 94);
+sprite_change_offset("taunt", 48, 94);
+sprite_change_offset("wait", 48, 94);
+sprite_change_offset("ledge", 48, 94);
+sprite_change_offset("turn", 48, 94);
 
-pet_w = 45;			// Default: 40 (The buddy's width)
+pet_w = 26;			// Default: 40 (The buddy's width)
 run_speed = 0;		// Default: 3
 max_run_dist = 5000;	// Default: 100 (The buddy will follow the player once their distance exceeds this value)
 
-offset_x = 50
-offset_y = 94
+offset_x = 48;
+offset_y = 94;
 
 // makes it play on load
-// state = "taunt"
+state = "taunt";
+state_timer = 58;
 
 current_sound = "nothing";
 current_sound_text = "nothing";
